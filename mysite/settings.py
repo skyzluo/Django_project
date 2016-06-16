@@ -56,7 +56,8 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(os.path.dirname(__file__), 'templates')],
+       # 'DIRS': [os.path.join(os.path.dirname(__file__), 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,6 +69,10 @@ TEMPLATES = [
         },
     },
 ]
+
+#import os
+#TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), 'templates'),)
+
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
@@ -101,3 +106,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+STATICFILES_DIRS = [
+    os.path.join(os.path.dirname(__file__), "static"),
+    '/var/www/static/',
+]
